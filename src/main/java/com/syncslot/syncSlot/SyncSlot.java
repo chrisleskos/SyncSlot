@@ -17,6 +17,7 @@ import java.util.Date;
 public class SyncSlot {
     private int id;
     private String name;
+    private String desc;
     private Date from;
     private Date duration;
     // In case of repeating recurrence, defines the end date of the slot. If it's one time, it won't be needed (null)

@@ -1,5 +1,6 @@
-package com.syncslot.party;
+package com.syncslot.attendee;
 
+import com.syncslot.party.Party;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Party {
+public class Attendee {
     private int id;
-    private String name;
-    private String desc;
+    private Party party;
+    private Boolean host;
 }

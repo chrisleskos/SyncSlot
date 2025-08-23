@@ -1,4 +1,4 @@
-package com.syncslot.syncSlot;
+package com.syncslot.slot;
 
 import com.syncslot.attendee.Attendee;
 import com.syncslot.party.Party;
@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class SyncSlot {
+public class Slot {
     private int id;
     private String name;
     private String desc;

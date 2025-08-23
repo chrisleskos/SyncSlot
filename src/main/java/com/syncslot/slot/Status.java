@@ -1,4 +1,4 @@
-package com.syncslot.syncSlot;
+package com.syncslot.slot;
 
 public enum Status {
     SCHEDULED,

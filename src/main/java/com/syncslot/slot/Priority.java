@@ -1,9 +1,9 @@
-package com.syncslot.syncSlot;
+package com.syncslot.slot;
 
 public enum Priority {
-    CRITICAL,
     OPTIONAL,
     LOW,
     MEDIUM,
     HIGH,
+    CRITICAL,
 }

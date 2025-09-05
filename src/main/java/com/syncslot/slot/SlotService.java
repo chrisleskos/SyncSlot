@@ -10,8 +10,8 @@ public class SlotService {
     @Autowired
     private SlotRepository slotRepository;
 
-    public void createSlot(Slot slot) {
-        slotRepository.save(slot);
+    public Slot createSlot(Slot slot) {
+        return slotRepository.save(slot);
     }
 
     public List<Slot> getAllSlots() {

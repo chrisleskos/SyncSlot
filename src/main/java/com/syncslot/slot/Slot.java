@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -24,19 +25,19 @@ public class Slot {
     private int slotId;
     private String name;
     private String description;
-    private Date fromDate;
+    private LocalDate fromDate;
     // - length=1 (apply to all recurrences) - duration.length > 1 (rotational)
-    private Date[] duration;
+    private List<Date> duration;
     // In case of repeating recurrence, defines the end date of the slot. If it's one time, it won't be needed (null)
-    private Date toDate;
+    private LocalDate toDate;
     // If empty, not recurrent.
     private List<Duration> recurrenceIntervals;
     @OneToMany
     @JoinColumn(name = "slot_id")
-    private Party[] parties;
+    private List<Party> parties;
     @OneToMany
     @JoinColumn(name = "slot_id")
-    private Attendee[] attendees;
+    private List<Attendee> attendees;
     private Status status;
     private Priority priority;
     @OneToOne

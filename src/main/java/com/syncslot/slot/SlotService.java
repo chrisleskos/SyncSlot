@@ -1,16 +1,21 @@
 package com.syncslot.slot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SlotService {
+    @Autowired
+    private SlotRepository slotRepository;
+
     public void createSlot(Slot slot) {
-        // Check slot rules
-        // Save slot
+        slotRepository.save(slot);
     }
 
-    public Slot allSlots() {
-        return new Slot();
+    public List<Slot> getAllSlots() {
+        return slotRepository.findAll();
     }
 
     public Slot getSlot(Integer id) {

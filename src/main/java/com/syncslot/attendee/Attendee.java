@@ -1,17 +1,23 @@
 package com.syncslot.attendee;
 
 import com.syncslot.party.Party;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Attendee {
-    private int id;
+    @Id
+    @GeneratedValue
+    private Integer attendeeId;
+    @ManyToOne
+    @JoinColumn(name = "party_id")
     private Party party;
     private Boolean host;
 }

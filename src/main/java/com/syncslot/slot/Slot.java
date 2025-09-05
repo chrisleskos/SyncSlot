@@ -2,8 +2,9 @@ package com.syncslot.slot;
 
 import com.syncslot.attendee.Attendee;
 import com.syncslot.party.Party;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,23 +13,33 @@ import java.util.Date;
 import java.util.List;
 
 
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Slot {
-    private int id;
+    @Id
+    @GeneratedValue
+    private int slotId;
     private String name;
-    private String desc;
-    private Date from;
-    private Date duration;
+    private String description;
+    private Date fromDate;
+    // - length=1 (apply to all recurrences) - duration.length > 1 (rotational)
+    private Date[] duration;
     // In case of repeating recurrence, defines the end date of the slot. If it's one time, it won't be needed (null)
-    private Date to;
-    // If empty, not recurrent
-    private List<Duration> recurrencePattern;
+    private Date toDate;
+    // If empty, not recurrent.
+    private List<Duration> recurrenceIntervals;
+    @OneToMany
+    @JoinColumn(name = "slot_id")
     private Party[] parties;
+    @OneToMany
+    @JoinColumn(name = "slot_id")
     private Attendee[] attendees;
     private Status status;
     private Priority priority;
+    @OneToOne
+    @JoinColumn(name = "slot_id")
     private Place place;
 }

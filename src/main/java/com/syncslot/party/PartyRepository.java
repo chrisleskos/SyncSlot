@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface PartyRepository extends JpaRepository<Party, Integer> {
-    public List<Party> findOrCreate(List<String> partyNames);
+    List<Party> findByNameIn(List<String> names);
 }
